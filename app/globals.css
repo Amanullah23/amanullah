@@ -1,0 +1,11 @@
+@tailwindcss base;
+@tailwindcss components;
+@tailwindcss utilities;
+@import "tailwindcss";
+
+
+*{
+  font-family: Outfit;  
+}
+
+
