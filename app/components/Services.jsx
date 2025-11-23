@@ -1,3 +1,4 @@
+"use client";
 import { assets, serviceData } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
@@ -11,7 +12,7 @@ const Services = () => {
             With <b>over 7 years of experience</b> in IT and software development, I deliver professional services that <b>turn ideas into high-impact digital solutions.</b> I have <b>excellent communication skills</b>, collaborate seamlessly with top-tier teams, and maintain a <b>wide network of connections</b> with both local and international companies. This allows me to provide <b>tailored, innovative, and reliable solutions</b> that meet the unique needs of each client.
             </p>
             
-            <div className='grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-6 my-10'>
+            <div className={'gap-6 my-10 grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))]'}>
             {serviceData.map(({icon, title, description, link}, index)=>(
                 <div key={index} className='border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:-translate-x-1 duration-500 hover:shadow-sm shadow-blue-500/50 dark:text-white'>
                     <Image src={icon} alt='' className='w-10'></Image>

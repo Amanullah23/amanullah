@@ -1,3 +1,4 @@
+"use client";
 // components/Experience.js
 const experiences = [
   {
@@ -28,10 +29,10 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section className="px-6 py-2 max-w-4xl mx-auto">
+    <section className="px-6 py-2 max-w-4xl mx-auto dark:text-white dark:bg-black">
       <h2 className="text-3xl font-bold text-center mb-3">My Experience</h2>
         <p className="text-center text-xl">From Kabul University (2018) – Present (2026) | ~7 Years Experience in IT, Software Development, and Technical Management.</p>
-      <div className="relative border-l-2 border-gray-300">
+      <div className="relative border-l-2 border-gray-300 dark:text-white">
         {experiences.map((exp, index) => (
           <div key={index} className="mb-10 ml-6">
             {/* Icon */}
@@ -43,7 +44,7 @@ export default function Experience() {
             <span className="text-gray-500 text-sm">{exp.date}</span>
 
             {/* Card */}
-            <div className="mt-2 p-4 bg-gray-100 rounded-md shadow-sm">
+            <div className="mt-2 p-4 bg-gray-100 rounded-md shadow-sm dark:bg-gray-800 dark:text-white">
               <h3 className="font-semibold text-lg">{exp.title}</h3>
               <p className="text-gray-600 italic">{exp.location}</p>
               <p className="mt-2 text-gray-700">{exp.description}</p>

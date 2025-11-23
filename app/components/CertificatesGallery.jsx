@@ -36,6 +36,33 @@ const CERTIFICATES = [
     image: '/cert.jpg',
     file: '/certs/realstar.pdf',
   },
+  {
+    id: 4,
+    title: 'Real Star Educational Society',
+    issuer: 'Real Star',
+    year: 2020,
+    tags: ['Data'],
+    image: '/cert.jpg',
+    file: '/certs/realstar.pdf',
+  },
+  {
+    id: 5,
+    title: 'Real Star Educational Society',
+    issuer: 'Real Star',
+    year: 2020,
+    tags: ['PHP'],
+    image: '/cert.jpg',
+    file: '/certs/realstar.pdf',
+  },
+  {
+    id: 6,
+    title: 'Real Star Educational Society',
+    issuer: 'Real Star',
+    year: 2020,
+    tags: ['Networking'],
+    image: '/cert.jpg',
+    file: '/certs/realstar.pdf',
+  },
   // add more certificates here...
 ];
 
@@ -46,7 +73,7 @@ function Tag({ label, active, onClick }) {
       className={`px-3 py-1 rounded-full text-sm border transition-all mr-2 mb-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300 ${
         active
           ? 'bg-indigo-600 text-white border-indigo-600'
-          : 'bg-white text-gray-700 border-gray-200'
+          : 'bg-white text-black border-gray-200'
       }`}
       aria-pressed={active}
     >
@@ -84,9 +111,9 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
 
   return (
     <section className="max-w-6xl mx-auto px-4 py-8">
-      <header className="mb-6">
-        <h2 className="text-2xl font-bold">Certificates & Training</h2>
-        <p className="text-gray-600 mt-1">Verified certificates and courses I have completed.</p>
+      <header className="mb-6 items-center text-center w-[80%] mx-auto" id='certificates'>
+        <h2 className="text-4xl font-semibold">Certificates & Training</h2>
+        <p className="text-black mt-1 justify-center">Over the past seven years, I have earned multiple prestigious certificates and recognitions from global organizations such as Cisco, WEI, Femstech Worldwide, HP, and Kabul University. These achievements reflect my continuous growth, dedication, and passion for technology and innovation — with more exciting accomplishments to be shared soon.</p>
       </header>
 
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
@@ -101,7 +128,7 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
           ))}
         </div>
 
-        <div className="flex items-center space-x-3">
+        {/*<div className="flex items-center space-x-3">
           <label htmlFor="search" className="sr-only">
             Search certificates
           </label>
@@ -121,7 +148,7 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
           >
             Reset
           </button>
-        </div>
+        </div>*/}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -135,7 +162,7 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
             onKeyDown={(e) => (e.key === 'Enter' ? setSelected(c) : null)}
             aria-label={`Open certificate ${c.title} from ${c.issuer}`}
           >
-            <div className="relative h-44 bg-gray-100">
+            <div className="relative h-60 bg-gray-100">
               {/* Use next/image in Next.js projects for optimization if you prefer */}
               <img
                 src={c.image}

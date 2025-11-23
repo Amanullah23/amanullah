@@ -82,6 +82,9 @@ const Navbar = () => {
             <a href="#work">My Work</a>
           </li>
           <li>
+            <a href="#certificates">Certificates</a>
+          </li>
+          <li>
             <a href="#contact">Contact me</a>
           </li>
         </ul>
@@ -149,6 +152,11 @@ const Navbar = () => {
           <li>
             <a onClick={closeMenu} href="#work">
               My Work
+            </a>
+          </li>
+          <li>
+            <a onClick={closeMenu} href="#certificates">
+              certificates
             </a>
           </li>
           <li>

@@ -31,7 +31,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="w-full px-[8%] py-10 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-contain"
+      className="w-full px-[8%] py-5 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-contain"
     >
       <h4 className="text-center mb-2 text-lg">Connect with me</h4>
       <h1 className="text-center text-4xl sm:text-5xl">Get in touch</h1>
@@ -41,8 +41,8 @@ const Contact = () => {
         please use the form below.
       </p>
 
-      <form onSubmit={onSubmit} className="max-w-2xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 mb-8">
+      <form onSubmit={onSubmit} className="max-w-2xl mx-auto" >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-5 mb-2">
           <input type="text"
             placeholder="Enter your name"
             required
@@ -61,7 +61,7 @@ const Contact = () => {
           rows="6"
           placeholder="Enter your message"
           required
-          className="w-full p-4 outline-none border border-gray-400 rounded-md bg-white mb-6" name='message'
+          className="w-full p-4 outline-none border border-gray-400 rounded-md bg-white mb-2" name='message'
         ></textarea>
 
         <button type="submit"

@@ -18,10 +18,7 @@ export default {
         Ovo: ["Ovo", "serif"],
         boko:["var(--font-bokoer)"]
       },
-      boxShadow: {
-        black: "0 4px 6px rgba(0,0,0,0.5)",
-        white: "0 4px 6px rgba(255,255,255,0.5)",
-      },
+
     },
   },
   darkMode: 'selector',
