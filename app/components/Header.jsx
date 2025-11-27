@@ -19,7 +19,7 @@ const Header = () => {
                     initial={{ y: -20, opacity: 0 }}
                     whileInView={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                ><span className='text-red-500'>Hi</span>, I am Amanullah Yawari
+                ><span className='text-red-500'>Hi</span>, I am <span className='font-bold'>Amanullah Yawari</span>
 
                 </motion.h3>
                 <motion.h3 className='text-xl sm:text-6xl lg:text-[50px] font-bold'

@@ -17,13 +17,13 @@ const Work = () => {
                 {workData.map((project, index) => (
                     <div
                         key={index}
-                        className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group'
+                        className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group '
                         style={{ backgroundImage: `url(${project.bgImage})` }}
                     >
-                        <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7'>
+                        <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 dark:bg-black'>
                             <div>
                                 <h3 className='font-normal '>{project.title}</h3>
-                                <p className='text-sm text-gray-700'>{project.description}</p>
+                                <p className='text-sm text-gray-700 dark:text-white'>{project.description}</p>
                             </div>
 
                             <div className='border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-linear-300'>
@@ -36,7 +36,7 @@ const Work = () => {
 
             <Link
                 href="/worksdetails"
-                className="w-max px-5 py-3 border border-gray-500 rounded-full flex items-center gap-2 mx-auto hover:bg-sky-700 hover:text-white"
+                className="w-max px-5 py-2 border border-gray-500 rounded-full flex items-center gap-2 mx-auto hover:bg-gray-500 hover:text-white"
             >
                 Show more
                 <Image src={assets.right_arrow_bold} alt="" className="w-4" />

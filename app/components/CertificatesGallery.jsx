@@ -162,7 +162,7 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
             onKeyDown={(e) => (e.key === 'Enter' ? setSelected(c) : null)}
             aria-label={`Open certificate ${c.title} from ${c.issuer}`}
           >
-            <div className="relative h-60 bg-gray-100">
+            <div className="relative h-60 bg-gray-100 dark:bg-gray-500">
               {/* Use next/image in Next.js projects for optimization if you prefer */}
               <img
                 src={c.image}
@@ -171,7 +171,7 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
               />
             </div>
 
-            <div className="p-4">
+            <div className="p-4 dark:bg-black">
               <h3 className="text-lg font-semibold">{c.title}</h3>
               <p className="text-sm text-gray-500">{c.issuer} • {c.year}</p>
               <div className="mt-3 flex flex-wrap">
@@ -198,7 +198,7 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
       {/* Modal / Lightbox */}
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 "
           role="dialog"
           aria-modal="true"
         >
@@ -208,11 +208,11 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
             aria-hidden
           />
 
-          <div className="relative max-w-3xl w-full bg-white rounded-lg shadow-xl overflow-hidden">
+          <div className="relative max-w-3xl w-full bg-white rounded-lg shadow-xl overflow-hidden dark:bg-black dark:border dark:border-white">
             <div className="flex items-start justify-between p-4 border-b">
               <div>
                 <h3 className="text-lg font-semibold">{selected.title}</h3>
-                <p className="text-sm text-gray-500">{selected.issuer} • {selected.year}</p>
+                <p className="text-sm text-gray-500 ">{selected.issuer} • {selected.year}</p>
               </div>
               <button
                 onClick={() => setSelected(null)}
@@ -229,15 +229,15 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
               </div>
 
               <div>
-                <p className="text-gray-700 mb-4">Certificate: <strong>{selected.title}</strong></p>
-                <p className="text-gray-600 mb-4">Issued by <strong>{selected.issuer}</strong> • {selected.year}</p>
+                <p className="text-gray-700 mb-4 dark:text-white">Certificate: <strong>{selected.title}</strong></p>
+                <p className="text-gray-600 mb-4 dark:text-white">Issued by <strong>{selected.issuer}</strong> • {selected.year}</p>
 
                 <div className="flex gap-3">
                   {selected.file && (
                     <a
                       href={selected.file}
                       download
-                      className="px-4 py-2 rounded-md border bg-indigo-600 text-white hover:bg-indigo-700"
+                      className="px-4 py-2 rounded-md border bg-gray-600 text-white hover:bg-indigo-700"
                     >
                       Download PDF
                     </a>
@@ -245,13 +245,13 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
 
                   <button
                     onClick={() => setSelected(null)}
-                    className="px-4 py-2 rounded-md border bg-gray-50"
+                    className="px-4 py-2 rounded-md border bg-gray-50 dark:bg-amber-400 cursor-pointer"
                   >
                     Close
                   </button>
                 </div>
 
-                <div className="mt-6 text-sm text-gray-500">
+                <div className="mt-6 text-sm text-gray-500 dark:text-white">
                   Tip: Keep your original certificates in a safe place and upload high-resolution copies here for verification.
                 </div>
               </div>
