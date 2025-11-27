@@ -110,8 +110,8 @@ export default function CertificatesGallery({ certificates = CERTIFICATES }) {
   }, []);
 
   return (
-    <section className="max-w-6xl mx-auto px-4 py-8">
-      <header className="mb-6 items-center text-center w-[80%] mx-auto" id='certificates'>
+    <section className="max-w-6xl mx-auto px-4 py-28" id='certificates'>
+      <header className="mb-6 items-center text-center w-[80%] mx-auto">
         <h2 className="text-4xl font-semibold">Certificates & Training</h2>
         <p className="text-black mt-1 justify-center">Over the past seven years, I have earned multiple prestigious certificates and recognitions from global organizations such as Cisco, WEI, Femstech Worldwide, HP, and Kabul University. These achievements reflect my continuous growth, dedication, and passion for technology and innovation — with more exciting accomplishments to be shared soon.</p>
       </header>

@@ -5,10 +5,10 @@ import React from 'react'
 
 const Services = () => {
     return (
-        <div id='services' className='w-full px-[12%] py-2 scroll-mt-20'>
+        <div id='services' className='w-full px-[12%] py-6 scroll-mt-20'>
             <h4 className='text-center mb-2 text-lg '>What I offer</h4>
             <h1 className='text-center text-5xl'>My services</h1>
-            <p className='text-center mb-12 mt-5 mx-auto max-w-4xl text-lg'>
+            <p className='text-center mb-12 mt-5 mx-auto max-w-4xl'>
             With <b>over 7 years of experience</b> in IT and software development, I deliver professional services that <b>turn ideas into high-impact digital solutions.</b> I have <b>excellent communication skills</b>, collaborate seamlessly with top-tier teams, and maintain a <b>wide network of connections</b> with both local and international companies. This allows me to provide <b>tailored, innovative, and reliable solutions</b> that meet the unique needs of each client.
             </p>
             

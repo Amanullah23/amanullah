@@ -9,8 +9,8 @@ const Work = () => {
         <div id='work' className='w-full px-[6%] py-10 scroll-mt-20'>
             <h4 className='text-center mb-2 text-lg '>My portfolio</h4>
             <h1 className='text-center text-5xl'>My latest works</h1>
-            <p className='text-center mb-2 mt-5 mx-auto max-w-2xl '>
-                With over 7 years of expertise in IT, I have honed my skills in networking, programming, and system management. I specialize in Python, Django, TensorFlow, Flutter, and Next.js, delivering high-quality web and mobile applications. I am passionate about creating innovative, efficient, and user-focused digital solutions that solve real-world problems - more exciting works are coming soon.
+            <p className='text-center mb-2 mt-5 mx-auto max-w-4xl '>
+                With over 7 years of expertise in IT, I have honed my skills in networking, programming, and system management. I specialize in Python, Django, TensorFlow, Flutter, and Next.js, delivering high-quality web and mobile applications. <br/>I am passionate about creating innovative, efficient, and user-focused digital solutions that solve real-world problems - more exciting works are coming soon.
             </p>
 
             <div className={'grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] my-10 gap-5'}>
