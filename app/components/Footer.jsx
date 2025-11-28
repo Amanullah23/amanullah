@@ -46,10 +46,10 @@ const Footer = () => {
             <a target='_blank' href='https://x.com/theyawari?t=zTjo68BwwvyHkgNo89SX-g&s=09'>X</a>
           </li>
           <li className='hover:text-blue-500 transition-transform duration-300 hover:translate-y-[-3px]'>
-            <a target='_blank' href='https://x.com/theyawari?t=zTjo68BwwvyHkgNo89SX-g&s=09'>Facebook</a>
+            <a target='_blank' href='https://www.facebook.com/share/17tGSi8eNF/'>Facebook</a>
           </li>
           <li className='hover:text-red-500 transition-transform duration-300 hover:translate-y-[-3px]'>
-            <a target='_blank' href='https://x.com/theyawari?t=zTjo68BwwvyHkgNo89SX-g&s=09'>Instagram</a>
+            <a target='_blank' href='https://www.instagram.com/amanullah_yawari?igsh=YjF4ZHJjZ29la2Rt'>Instagram</a>
           </li>
         </ul>
       </div>
