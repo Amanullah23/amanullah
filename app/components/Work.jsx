@@ -13,7 +13,7 @@ const Work = () => {
                 With over 7 years of expertise in IT, I have honed my skills in networking, programming, and system management. I specialize in Python, Django, TensorFlow, Flutter, and Next.js, delivering high-quality web and mobile applications. <br/>I am passionate about creating innovative, efficient, and user-focused digital solutions that solve real-world problems - more exciting works are coming soon.
             </p>
 
-            <div className={'grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] my-10 gap-5'}>
+            <div className={'grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] my-10 gap-5'}>
                 {workData.map((project, index) => (
                     <div
                         key={index}

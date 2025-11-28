@@ -1,4 +1,4 @@
-
+"use client";
 import { assets } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
@@ -39,7 +39,7 @@ const Header = () => {
                         whileInView={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.6, delay: 1 }}
                         href="#contact"
-                        className="w-full sm:w-auto text-center px-8 py-3 border border-white rounded-full bg-black text-white flex items-center justify-center gap-2 hover:bg-black/90 duration-300 transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500"
+                        className="w-full sm:w-auto text-center px-8 py-3 border border-white rounded-full bg-black text-white flex items-center justify-center gap-2 hover:bg-black/90  transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
                     >
                         Contact Me
                         <Image src={assets.right_arrow_white} alt="" className="w-4" />

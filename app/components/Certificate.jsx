@@ -1,4 +1,4 @@
-
+"use client";
 import { assets } from '@/assets/assets'
 import React from 'react'
 import Image from "next/image";
@@ -9,7 +9,7 @@ const Certificate = () => {
     <div className='w-full px-[12%] py-10 scroll-mt-5'>
       <h4 className='text-center mb-2 text-lg '>Awards & Recognitions</h4>
       <h1 className='text-center text-5xl'>Achievements and Certifications</h1>
-      <p className='text-center mb-5 mt-5 mx-auto max-w-2xl '>
+      <p className='text-center mb-5 mt-5 mx-auto max-w-2xl dark:text-white'>
       Over the past seven years, I have earned multiple prestigious certificates and recognitions from global organizations such as Cisco, WEI, Femstech Worldwide, HP, and Kabul University. These achievements reflect my continuous growth, dedication, and passion for technology and innovation — with more exciting accomplishments to be shared soon.
       </p>
 
