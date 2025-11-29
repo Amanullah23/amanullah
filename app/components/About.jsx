@@ -46,11 +46,12 @@ const About = ({ isDarkMode }) => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 1 }}
           >
-            I’m a passionate software developer with 6+ years of experience in
-            building web and mobile applications using Python, Django, Flutter,
-            Laravel, and modern technologies. I enjoy solving real-world
-            problems with clean and scalable code. Currently open to remote
-            opportunities and freelance projects. Let’s connect!
+            I am a skilled developer with expertise in React, Next.js, Flutter,
+            React Native, Python, Django, HTML, CSS, TailwindCSS, and Figma for
+            UI/UX design. With a strong IT background and a Bachelor’s degree in
+            Computer Science, I create modern, scalable, and high-quality
+            digital solutions. I bring solid problem-solving skills and
+            communicate effectively in Dari and English. Let’s connect!
           </motion.p>
           <motion.ul
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
