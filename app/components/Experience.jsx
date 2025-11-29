@@ -2,28 +2,28 @@
 // components/Experience.js
 const experiences = [
   {
-    title: "Computer Science",
+    title: "Full-Stack Developer/Technical Manager",
     location: "Kabul, Afghanistan",
     date: "2022- present",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
-    icon: "🎓",
+      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma, and MongoDB. Open to full-time opportunities.",
+    icon: "⚛️",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Front-End Developer/ IT Specialist",
+    location: "Kabul, Afghanistan",
     date: "2019 - 2022",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to full stack.",
+      "I worked as a front-end developer for 3 years in 1 job and 2 year in another job. I also upskilled to full stack and as IT assistant.",
     icon: "💼",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Computer Science-Kabul University",
+    location: "Kabul, Afghanistan",
     date: "2018 - 2019",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma, and MongoDB. Open to full-time opportunities.",
-    icon: "⚛️",
+      "I graduated after 4 years of studying(2015-2018). I immediately found a job as a front-end developer.",
+    icon: "🎓",
   },
 ];
 
