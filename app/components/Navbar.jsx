@@ -84,12 +84,12 @@ const Navbar = () => {
               : "bg-white shadow-sm bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"
           }`}
         >
-          <li><a href="#top" className="font-Ovo">Home</a></li>
-          <li><a href="#about">About me</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#work">My Work</a></li>
-          <li><a href="#certificates">Certificates</a></li>
-          <li><a href="#contact">Contact me</a></li>
+          <li><a href="/#top" className="font-Ovo">Home</a></li>
+          <li><a href="/#about">About me</a></li>
+          <li><a href="/#services">Services</a></li>
+          <li><a href="/#work">My Work</a></li>
+          <li><a href="/#certificates">Certificates</a></li>
+          <li><a href="/#contact">Contact me</a></li>
         </ul>
 
         {/* Right Section */}
@@ -107,7 +107,7 @@ const Navbar = () => {
           </button>
 
           <motion.a
-            href="#contact"
+            href="/#contact"
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 transition hover:-translate-y-1 hover:scale-110 hover:text-black dark:border-white/50 dark:hover:text-white"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
