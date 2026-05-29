@@ -8,7 +8,7 @@ export default function MobileAppsPage() {
     <Navbar />
     <main className="min-h-screen bg-gray-50 text-gray-900">
       {/* HERO */}
-      <section className="bg-gradient-to-r from-blue-500 to-blue-300 text-white">
+      <section className="bg-linear-to-r from-blue-500 to-blue-300 text-white">
         <div className="max-w-6xl mx-auto px-6 py-20 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 mt-10">
             Flutter & Mobile App Development

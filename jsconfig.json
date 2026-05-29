@@ -1,9 +1,10 @@
-        {
-          "compilerOptions": {
-            "baseUrl": ".",
-            "paths": {
-              "@/*": ["./*"],
-              "@/assets/*": ["./assets/*"] // Or adjust as needed
-            }
-          }
-        }
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/assets/*": ["./assets/*"]
+    }
+  }
+}
