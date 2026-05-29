@@ -41,7 +41,7 @@ const isDarkMode = theme === "dark";
       </div>
 
       <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6">
-        <p>@ 2025 Amanullah Yawari. All right reserved.</p>
+        <p>@ 2026 Amanullah Yawari. All right reserved.</p>
         <ul className="flex items-center gap-5 justify-center mt-4">
           <li className="hover:text-blue-500 transition-transform duration-300 hover:translate-y-[-3px]">
             <a target="_blank" href="https://github.com/Amanullah23">
