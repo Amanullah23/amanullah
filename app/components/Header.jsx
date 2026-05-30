@@ -36,8 +36,8 @@ const Header = () => {
         <Image
           src={assets.profile_img}
           alt="Amanullah Yawari"
-          width={112}
-          height={112}
+          width={152}
+          height={142}
           className="rounded-full border-2 border-gray-200 dark:border-gray-700"
         />
         <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-teal-500 rounded-full border-2 border-white dark:border-gray-900" />
