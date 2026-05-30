@@ -4,100 +4,162 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react";
 
+const skills = [
+  "React", "Next.js", "Flutter", "Django",
+  "Python", "TensorFlow", "TailwindCSS", "Figma", "PostgreSQL"
+]
+
 const About = ({ isDarkMode }) => {
   return (
     <motion.div
       id="about"
-      className="w-full px-[8%] py-5 scroll-mt-20"
+      className="w-full px-[8%] py-10 scroll-mt-20"
       initial={{ opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.7 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
     >
+      {/* Heading */}
       <motion.h4
-        className="text-center mb-2 text-lg "
+        className="text-center mb-2 text-xs tracking-widest uppercase text-gray-400"
         initial={{ y: -20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
         Introduction
       </motion.h4>
       <motion.h1
-        className="text-center text-5xl"
+        className="text-center text-5xl mb-10"
         initial={{ opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
       >
         About me
       </motion.h1>
-      <div className="flex w-full flex-col lg:flex-row items-center gap-20 my-5">
-        <div className="w-64 sm:w-80 rounded-3xl max-w-none">
-          <Image
-            src={assets.user_image}
-            alt=""
-            className="rounded-3xl"
-            width={300}
-            height={300}
-          />
-        </div>
+
+      {/* Body */}
+      <div className="flex flex-col lg:flex-row items-start gap-12 w-full">
+
+        {/* Image column */}
+        <motion.div
+          className="flex flex-col items-start gap-3 flex-shrink-0"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="w-56 sm:w-64 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+            <Image
+              src={assets.user_image}
+              alt="Amanullah Yawari"
+              width={300}
+              height={350}
+              className="rounded-2xl w-full object-cover"
+            />
+          </div>
+          <div className="flex items-center gap-2 text-xs font-medium text-teal-700 bg-teal-50 dark:bg-teal-950 dark:text-teal-400 rounded-full px-4 py-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+            Available for work
+          </div>
+        </motion.div>
+
+        {/* Content column */}
         <div className="flex-1">
+
+          {/* Bio */}
           <motion.p
-            className="mb-10 max-w-2xl font-serif"
-            initial={{ y: 30, opacity: 0 }}
+            className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5 max-w-xl"
+            initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
-            I am a skilled developer with expertise in React, Next.js, Flutter,
-            React Native, Python, Django, HTML, CSS, TailwindCSS, and Figma for
-            UI/UX design. With a strong IT background and a Bachelor’s degree in
-            Computer Science, I create modern, scalable, and high-quality
-            digital solutions. I bring solid problem-solving skills and
-            communicate effectively in Dari and English. Let’s connect!
+            I am a{" "}
+            <span className="text-gray-800 dark:text-white font-medium">
+              Full Stack Developer & IT Specialist
+            </span>{" "}
+            from Kabul, Afghanistan, with over{" "}
+            <span className="text-gray-800 dark:text-white font-medium">
+              7 years of experience
+            </span>{" "}
+            in networking, programming, and system management. I hold a{" "}
+            <span className="text-gray-800 dark:text-white font-medium">
+              Bachelor's degree in Computer Science
+            </span>{" "}
+            and have worked with the Election Commission of Afghanistan, Fanoos,
+            Talia, and Quika. Member of{" "}
+            <span className="text-gray-800 dark:text-white font-medium">
+              GELA Cohort-12
+            </span>
+            . Fluent in Dari and English.
           </motion.p>
+
+          {/* Skills pills */}
+          <motion.div
+            className="flex flex-wrap gap-2 mb-6"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="text-xs px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400"
+              >
+                {skill}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* Info cards */}
           <motion.ul
-            className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl"
-            initial={{ y: 30, opacity: 0 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mb-6"
+            initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
           >
             {infoList.map(({ icon, iconDark, title, description }, index) => (
-              <motion.li
+              <li
                 key={index}
-                className="border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer hover:-translate-y-1 duration-500 dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50"
-                initial={{ y: 30, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 1 }}
+                className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 cursor-pointer hover:-translate-y-1 transition-all duration-300 bg-white dark:bg-gray-900"
               >
                 <Image
                   src={isDarkMode ? iconDark : icon}
-                  alt="title"
-                  className="w-7 mt-3"
-                ></Image>
-
-                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
+                  alt={title}
+                  className="w-7 mb-3"
+                />
+                <h3 className="text-sm font-medium text-gray-800 dark:text-white mb-1">
                   {title}
                 </h3>
-                <p className="text-gray-600 text-sm dark:text-white/80">
+                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
                   {description}
                 </p>
-              </motion.li>
+              </li>
             ))}
           </motion.ul>
 
-          <h4 className=" text-gray-700 dark:text-white">Tools I use</h4>
-          <ul className="flex items-center gap-3 sm:gap-5">
-            {toolsData.map((tool, index) => (
-              <li
-                className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
-                key={index}
-              >
-                <Image src={tool} alt="Tool" className="w-5 sm:w-7"></Image>
-              </li>
-            ))}
-          </ul>
+          {/* Tools */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <p className="text-xs font-medium tracking-widest uppercase text-gray-400 mb-3">
+              Tools I use
+            </p>
+            <ul className="flex items-center gap-2 flex-wrap">
+              {toolsData.map((tool, index) => (
+                <li
+                  key={index}
+                  className="w-10 h-10 border border-gray-200 dark:border-gray-700 rounded-lg flex items-center justify-center cursor-pointer hover:-translate-y-1 transition-all duration-300 bg-white dark:bg-gray-900"
+                >
+                  <Image src={tool} alt="Tool" className="w-6" />
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
         </div>
       </div>
     </motion.div>
-  );
-};
+  )
+}
 
-export default About;
+export default About

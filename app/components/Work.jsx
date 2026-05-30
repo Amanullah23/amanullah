@@ -5,44 +5,70 @@ import Link from 'next/link'
 import React from 'react'
 
 const Work = () => {
-    return (
-        <div id='work' className='w-full px-[6%] py-10 scroll-mt-20'>
-            <h4 className='text-center mb-2 text-lg '>My portfolio</h4>
-            <h1 className='text-center text-5xl'>My latest works</h1>
-            <p className='text-center mb-2 mt-5 mx-auto max-w-4xl '>
-                With over 7 years of expertise in IT, I have honed my skills in networking, programming, and system management. I specialize in Python, Django, TensorFlow, Flutter, and Next.js, delivering high-quality web and mobile applications. <br/>I am passionate about creating innovative, efficient, and user-focused digital solutions that solve real-world problems - more exciting works are coming soon.
-            </p>
+  return (
+    <div id='work' className='w-full px-[6%] py-10 scroll-mt-20'>
+      <h4 className='text-center mb-2 text-lg text-gray-500 tracking-widest uppercase text-sm'>
+        My portfolio
+      </h4>
+      <h1 className='text-center text-5xl font-serif mb-4'>My latest works</h1>
+      <p className='text-center mb-2 mt-4 mx-auto max-w-2xl text-gray-500 leading-relaxed'>
+        With over 7 years of expertise in IT, I specialize in Python, Django,
+        TensorFlow, Flutter, and Next.js — delivering high-quality web and
+        mobile applications focused on real-world impact.
+      </p>
 
-            <div className={'grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] my-10 gap-5'}>
-                {workData.map((project, index) => (
-                    <div
-                        key={index}
-                        className='aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group '
-                        style={{ backgroundImage: `url(${project.bgImage})` }}
-                    >
-                        <div className='bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7 dark:bg-black'>
-                            <div>
-                                <h3 className='font-normal '>{project.title}</h3>
-                                <p className='text-sm text-gray-700 dark:text-white'>{project.description}</p>
-                            </div>
-
-                            <div className='border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-linear-300'>
-                                <Image src={assets.send_icon} alt='send icon' className='w-5' />
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            <Link
-                href="/worksdetails"
-                className="w-max px-5 py-2 border border-gray-500 rounded-full flex items-center gap-2 mx-auto hover:bg-gray-500 hover:text-white"
+      <div className='grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] my-10 gap-5'>
+        {workData.map((project, index) => (
+          <div
+            key={index}
+            className='rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 relative cursor-pointer group hover:-translate-y-1 transition-transform duration-300'
+            style={{ backgroundImage: `url(${project.bgImage})` }}
+          >
+            <div
+              className='aspect-square bg-no-repeat bg-cover bg-center relative'
+              style={{ backgroundImage: `url(${project.bgImage})` }}
             >
-                Show more
-                <Image src={assets.right_arrow_bold} alt="" className="w-4" />
-            </Link>
+              <div className='absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300' />
+
+              <div className='bg-white dark:bg-black w-10/12 rounded-lg absolute bottom-4 left-1/2 -translate-x-1/2 py-3 px-4 flex items-center justify-between duration-300 group-hover:bottom-6 border border-gray-100 dark:border-gray-800'>
+                <div>
+                  <h3 className='font-medium text-sm'>{project.title}</h3>
+                  <p className='text-xs text-gray-500 dark:text-gray-400'>{project.description}</p>
+                </div>
+                <div className='border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-black group-hover:border-black dark:group-hover:bg-white transition-all duration-300 flex-shrink-0'>
+                  <Image
+                    src={assets.send_icon}
+                    alt='open project'
+                    className='w-4 group-hover:invert dark:invert'
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Footer row */}
+      <div className='flex items-center justify-center gap-10 flex-wrap'>
+        <div className='flex gap-8'>
+          {[['7+', 'Years exp.'], ['20+', 'Projects'], ['5', 'Tech stacks']].map(([num, label]) => (
+            <div key={label} className='text-center'>
+              <p className='text-2xl font-serif font-bold'>{num}</p>
+              <p className='text-xs text-gray-500 mt-0.5'>{label}</p>
+            </div>
+          ))}
         </div>
-    )
+
+        <Link
+          href="/worksdetails"
+          className="flex items-center gap-2 px-6 py-2.5 border border-gray-400 rounded-full text-sm hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black transition-all duration-300"
+        >
+          Show more
+          <Image src={assets.right_arrow_bold} alt="" className="w-4 group-hover:invert" />
+        </Link>
+      </div>
+    </div>
+  )
 }
 
 export default Work;

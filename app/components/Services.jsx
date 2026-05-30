@@ -1,30 +1,92 @@
 "use client";
-import { assets, serviceData } from '@/assets/assets'
-import Image from 'next/image'
+import { serviceData } from '@/assets/assets'
 import React from 'react'
 
-const Services = () => {
-    return (
-        <div id='services' className='w-full px-[12%] py-6 scroll-mt-20'>
-            <h4 className='text-center mb-2 text-lg '>What I offer</h4>
-            <h1 className='text-center text-5xl'>My services</h1>
-            <p className='text-center mb-12 mt-5 mx-auto max-w-4xl'>
-            With <b>over 7 years of experience</b> in IT and software development, I deliver professional services that <b>turn ideas into high-impact digital solutions.</b> I have <b>excellent communication skills</b>, collaborate seamlessly with top-tier teams, and maintain a <b>wide network of connections</b> with both local and international companies. This allows me to provide <b>tailored, innovative, and reliable solutions</b> that meet the unique needs of each client.
-            </p>
-            
-            <div className={'gap-6 my-10 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]'}>
-            {serviceData.map(({icon, title, description, link}, index)=>(
-                <div key={index} className='border border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:-translate-x-1 duration-500 hover:shadow-sm shadow-blue-500/50 dark:text-white'>
-                    <Image src={icon} alt='' className='w-10'></Image>
-                    <h3 className='text-lg my-4 text-gray-700 dark:text-white'>{title}</h3>
-                    <p className='text-sm text-gray-600 leading-5 dark:text-white'>{description}</p>
-                    <a href="services" className='flex items-center gap-2 text-sm mt-5'>Read more <Image src={assets.right_arrow} alt='' className='w-4'></Image></a>
-                </div>
-            ))}
-            </div>
+const iconColors = [
+  { bg: 'bg-blue-50',   text: 'text-blue-700'  },
+  { bg: 'bg-teal-50',   text: 'text-teal-700'  },
+  { bg: 'bg-purple-50', text: 'text-purple-700' },
+  { bg: 'bg-amber-50',  text: 'text-amber-700'  },
+  { bg: 'bg-orange-50', text: 'text-orange-700' },
+  { bg: 'bg-green-50',  text: 'text-green-700'  },
+  { bg: 'bg-pink-50',   text: 'text-pink-700'   },
+  { bg: 'bg-gray-50',  text: 'text-gray-600'   },
+]
 
-        </div>
-    )
+const Services = () => {
+  return (
+    <div id='services' className='w-full px-[12%] py-10 scroll-mt-20'>
+
+      <h4 className='text-center mb-2 text-xs tracking-widest uppercase text-gray-400'>
+        What I offer
+      </h4>
+
+      <h1 className='text-center text-5xl font-serif mb-4'>
+        My services
+      </h1>
+
+      <p className='text-center mb-10 mt-4 mx-auto max-w-2xl text-gray-500 leading-relaxed text-sm'>
+        Over 7 years in IT and software development — turning ideas into
+        high-impact digital solutions through collaboration, innovation, and
+        a wide network of local and international partners.
+      </p>
+
+      <div className='grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-4 my-8'>
+        {serviceData.map(({ icon, title, description, link }, index) => {
+          const color = iconColors[index % iconColors.length]
+
+          return (
+            <div
+              key={index}
+              className='border border-gray-200 dark:border-gray-700 rounded-xl px-5 py-6 flex flex-col gap-3 hover:-translate-y-1 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 cursor-pointer bg-white dark:bg-gray-900'
+            >
+              {/* Icon */}
+              <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${color.bg}`}>
+                <img
+                  src={typeof icon === "string" ? icon : icon?.src}
+                  alt={title}
+                  className='w-5 h-5'
+                />
+              </div>
+
+              {/* Title */}
+              <h3 className='text-sm font-medium text-gray-800 dark:text-white'>
+                {title}
+              </h3>
+
+              {/* Description */}
+              <p className='text-xs text-gray-500 dark:text-gray-400 leading-relaxed flex-1'>
+                {description}
+              </p>
+
+              {/* Read more link */}
+              <a
+                href={link || '/services'}
+                className='flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors duration-200 mt-1'
+              >
+                Read more
+                <svg className='w-3 h-3' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
+                </svg>
+              </a>
+
+            </div>
+          )
+        })}
+      </div>
+
+      {/* View all services */}
+      <div className='text-center mt-6'>
+        <a
+          href='/services'
+          className='inline-flex items-center gap-2 text-sm text-gray-500 border border-gray-300 rounded-full px-6 py-2.5 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300'
+        >
+          View all services
+        </a>
+      </div>
+
+    </div>
+  )
 }
 
 export default Services

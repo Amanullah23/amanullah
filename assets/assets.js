@@ -117,6 +117,8 @@ export const serviceData = [
     { icon: assets.mobile_icon, title: 'AI & Machine Learning', description: 'Implement intelligent solutions with TensorFlow for smarter, data-driven results.', link: '' },
     { icon: assets.ui_icon, title: 'Networking & IT Solutions', description: 'Design, manage, and optimize secure networks and IT systems.', link: '' },
     { icon: assets.graphics_icon, title: 'System & Application Management', description: 'Maintain and improve digital platforms for smooth, efficient operation.', link: '' },
+    { icon: assets.palette_icon, title: "UI/UX consultation", description: "Design guidance for clean, user-focused interfaces with Tailwind CSS and dark mode support.", link: "/services" },
+    { icon: assets.school_icon,  title: "IT training & mentoring", description: "One-on-one and group training in programming, networking, and system management.", link: "/services" },
 ]
 
 export const infoList = [
