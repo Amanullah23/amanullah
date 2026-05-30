@@ -52,7 +52,7 @@ const CERTIFICATES = [
     issuer: 'HP',
     year: 2025,
     tags: ['PHP','Data'],
-    image: '/cer-HP-2.png',
+    image: '/cer-hp-2.png',
     file: '/certs/realstar.pdf',
   },
   {
