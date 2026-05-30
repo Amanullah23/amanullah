@@ -46,27 +46,27 @@ const Contact = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-5 mb-2">
           <input
             type="text"
-            name="name"
             placeholder="Enter your name"
             required
             className="w-full p-3 outline-none border border-gray-400 rounded-md"
+            name="name"
           />
 
           <input
             type="email"
-            name="email"
             placeholder="Enter your email"
             required
             className="w-full p-3 outline-none border border-gray-400 rounded-md"
+            name="email"
           />
         </div>
 
         <textarea
           rows={6}
-          name="message"
           placeholder="Enter your message"
           required
           className="w-full p-4 outline-none border border-gray-400 rounded-md mb-2"
+          name="message"
         />
 
         <button
