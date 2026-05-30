@@ -8,6 +8,8 @@ import project_icon_dark from './project-icon-dark.png';
 import vscode from './vscode.png';
 import firebase from './firebase.png';
 import figma from './figma.png';
+import prisma from './prisma.png';
+import postgresql from './postgresql.png';
 import git from './git.png';
 import mongodb from './mongodb.png';
 import node from './node.png';
@@ -31,6 +33,8 @@ import close_white from './close-white.png';
 import web_icon from './web-icon.png';
 import mobile_icon from './mobile-icon.png';
 import ui_icon from './ui-icon.png';
+import it from './it.png';
+import uiux from './uiux.png';
 import graphics_icon from './graphics-icon.png';
 import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
@@ -57,6 +61,8 @@ export const assets = {
     git,
     mongodb,
     node,
+    prisma,
+    postgresql,
     right_arrow_white,
     logo,
     logo_dark,
@@ -77,6 +83,8 @@ export const assets = {
     web_icon,
     mobile_icon,
     ui_icon,
+    uiux,
+    it,
     graphics_icon,
     right_arrow,
     send_icon,
@@ -117,16 +125,16 @@ export const serviceData = [
     { icon: assets.mobile_icon, title: 'AI & Machine Learning', description: 'Implement intelligent solutions with TensorFlow for smarter, data-driven results.', link: '' },
     { icon: assets.ui_icon, title: 'Networking & IT Solutions', description: 'Design, manage, and optimize secure networks and IT systems.', link: '' },
     { icon: assets.graphics_icon, title: 'System & Application Management', description: 'Maintain and improve digital platforms for smooth, efficient operation.', link: '' },
-    { icon: assets.palette_icon, title: "UI/UX consultation", description: "Design guidance for clean, user-focused interfaces with Tailwind CSS and dark mode support.", link: "/services" },
-    { icon: assets.school_icon,  title: "IT training & mentoring", description: "One-on-one and group training in programming, networking, and system management.", link: "/services" },
+    { icon: assets.uiux, title: "UI/UX consultation", description: "Design guidance for clean, user-focused interfaces with Tailwind CSS and dark mode support.", link: "/services" },
+    { icon: assets.it,  title: "IT training & mentoring", description: "One-on-one and group training in programming, networking, and system management.", link: "/services" },
 ]
 
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'PHP, Python, JavaScript, React Js, Dart, SQL' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Bachelor of Computer Science, Kabul University' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 12 projects' }
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 20 projects' }
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git, assets.node,
+    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git, assets.node, assets.prisma, assets.postgresql
 ];
