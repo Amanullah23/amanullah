@@ -11,7 +11,7 @@ const experiences = [
     current: true,
     description:
       "Working as a freelance full-stack developer and technical manager — building modern web and mobile applications for local and international clients.",
-    tags: ["Next.js", "React", "TypeScript", "Prisma", "MongoDB", "TailwindCSS"],
+    tags: ["Next.js", "React", "TypeScript", "Prisma", "MongoDB", "TailwindCSS","Project Management"],
     color: "teal",
   },
   {
@@ -22,7 +22,7 @@ const experiences = [
     current: false,
     description:
       "Worked as a front-end developer across two organizations over 3 years, progressively upskilling into full-stack development and IT support roles.",
-    tags: ["HTML", "CSS", "JavaScript", "React", "IT Support"],
+    tags: ["HTML", "CSS", "JavaScript", "React", "IT Support", "System Maintenance", "Client Communication"],
     color: "blue",
   },
   {
@@ -33,7 +33,7 @@ const experiences = [
     current: false,
     description:
       "Provided technical IT support and system management for one of Afghanistan's most critical government institutions during national election operations.",
-    tags: ["Networking", "System Admin", "IT Support"],
+    tags: ["Networking", "System Admin", "IT Support","Windows Server", "Linux", "Cisco", "Hardware Maintenance"],
     color: "amber",
   },
   {
@@ -44,7 +44,7 @@ const experiences = [
     current: false,
     description:
       "Completed a 4-year Bachelor's degree in Computer Science. Built a strong foundation in algorithms, data structures, software engineering, and networking.",
-    tags: ["Computer Science", "Algorithms", "Networking"],
+    tags: ["Computer Science", "Algorithms", "Networking","AI & Machine Learning", "Graduated with Honors"],
     color: "purple",
   },
   {
