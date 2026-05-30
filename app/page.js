@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 //import Certificate from "./components/Certificate";
 import Experience from "./components/Experience";
 import CertificatesGallery from "./components/CertificatesGallery";
-import Contact from "./contact/page";
+import Contact from "./components/Contact";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       <Work />
       {/*<Certificate />*/}
       <CertificatesGallery/>
-      <Contact />
+      <Contact/>
       <Footer />
     </>
   );
