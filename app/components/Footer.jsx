@@ -10,8 +10,8 @@ const socials = [
   { label: "X", href: "https://x.com/theyawari" },
   { label: "Facebook", href: "https://www.facebook.com/share/17tGSi8eNF/" },
   { label: "Instagram", href: "https://www.instagram.com/amanullah_yawari" },
-  { label: "Upwork", href: "https://www.upwork.com/freelancers/amanullahyawari" },
-  { label: "Fiverr", href: "https://www.fiverr.com/amanullahyawari" },
+  { label: "Upwork", href: "https://www.upwork.com/freelancers/~01ac93fb5be49e8261?mp_source=share" },
+  { label: "Fiverr", href: "https://www.fiverr.com/s/VYxYoke" },
 ];
 
 const Footer = () => {
@@ -19,7 +19,7 @@ const Footer = () => {
   const { theme } = useTheme();
   const isDarkMode = theme === "dark";
   const email = "an20kx@gmail.com";
-
+``
   const handleCopy = () => {
     navigator.clipboard.writeText(email).then(() => {
       setCopied(true);
@@ -66,7 +66,7 @@ const Footer = () => {
         {/* Upwork + Fiverr buttons */}
         <div className="flex items-center justify-center gap-3 flex-wrap mt-5">
           <a
-            href="https://www.upwork.com/freelancers/amanullahyawari"
+            href="https://www.upwork.com/freelancers/~01ac93fb5be49e8261?mp_source=share"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-xs font-medium text-green-700 bg-green-50 dark:bg-green-950 dark:text-green-400 border border-green-200 dark:border-green-800 rounded-full px-5 py-2 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-300 hover:-translate-y-0.5"
@@ -75,7 +75,7 @@ const Footer = () => {
           </a>
 
           <a
-            href="https://www.fiverr.com/amanullahyawari"
+            href="https://www.fiverr.com/s/VYxYoke"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-xs font-medium text-emerald-700 bg-emerald-50 dark:bg-emerald-950 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 rounded-full px-5 py-2 hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-300 hover:-translate-y-0.5"
