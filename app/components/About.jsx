@@ -41,7 +41,7 @@ const About = ({ isDarkMode }) => {
 
         {/* Image column */}
         <motion.div
-          className="flex flex-col items-start gap-3 flex-shrink-0"
+          className="flex flex-col items-start gap-3 shrink-0"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}

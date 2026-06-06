@@ -7,7 +7,7 @@ import React from 'react'
 const Work = () => {
   return (
     <div id='work' className='w-full px-[6%] py-10 scroll-mt-20'>
-      <h4 className='text-center mb-2 text-lg text-gray-500 tracking-widest uppercase text-sm'>
+      <h4 className='text-center mb-2 text-md text-gray-500 tracking-widest uppercase text-sm'>
         My portfolio
       </h4>
       <h1 className='text-center text-5xl font-serif mb-4'>My latest works</h1>
@@ -35,7 +35,7 @@ const Work = () => {
                   <h3 className='font-medium text-sm'>{project.title}</h3>
                   <p className='text-xs text-gray-500 dark:text-gray-400'>{project.description}</p>
                 </div>
-                <div className='border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-black group-hover:border-black dark:group-hover:bg-white transition-all duration-300 flex-shrink-0'>
+                <div className='border border-gray-300 dark:border-gray-600 rounded-full w-8 h-8 flex items-center justify-center group-hover:bg-black group-hover:border-black dark:group-hover:bg-white transition-all duration-300 shrink-0'>
                   <Image
                     src={assets.send_icon}
                     alt='open project'

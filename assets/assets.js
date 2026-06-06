@@ -94,7 +94,8 @@ export const assets = {
     certificate_eng,
     cert_hp_1,
     cert_hp_2,cert_3,
-    cert_4
+    cert_4,
+    
 };
 
 export const workData = [
@@ -116,7 +117,7 @@ export const workData = [
     {
         title: 'UI/UX designing',
         description: 'UI/UX Design',
-        bgImage: '/work-4.png',
+        bgImage: '/work-4.jpeg',
     },
 ]
 
