@@ -1,6 +1,6 @@
 "use client";
 
-import { assets } from "@/assets/assets";
+import { assets } from "../../assets/assets";
 import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react"; // Change to "framer-motion" if needed

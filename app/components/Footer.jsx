@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useTheme } from "next-themes";
-import { assets } from "@/assets/assets";
+import { assets } from "../../assets/assets";
 import Image from "next/image";
 
 const socials = [
