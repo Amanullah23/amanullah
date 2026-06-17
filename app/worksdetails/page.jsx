@@ -158,7 +158,7 @@ const Page = () => {
                 hover:-translate-y-1 transition-transform duration-300 flex flex-col bg-white dark:bg-neutral-900'
             >
               {/* Screenshot / Image */}
-              <div className='relative aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-800'>
+              <div className='relative aspect-16/10 overflow-hidden bg-gray-100 dark:bg-gray-800'>
                 <div
                   className='absolute inset-0 bg-cover bg-top transition-transform duration-500 group-hover:scale-105'
                   style={{ backgroundImage: `url(${project.image})` }}

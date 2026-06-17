@@ -4,15 +4,26 @@ import { motion } from "motion/react";
 
 const experiences = [
   {
-    title: "Full Stack Developer / Technical Manager",
-    company: "Freelance",
+    title: "Technical Manager / Full Stack Developer",
+    company: "Quika",
     location: "Kabul, Afghanistan",
+    date: "2024 – Present",
+    current: true,
+    description:
+      "Serving as Technical Manager and lead Full Stack Developer at Quika, a licensed ISP in Afghanistan. Building and maintaining the corporate website (quika.org) and developing an internal finance management system for ~500 wireless internet customers with role-based access, automated billing, and WhatsApp notifications.",
+    tags: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Supabase", "Prisma", "PostgreSQL", "Technical Management"],
+    color: "teal",
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Freelance",
+    location: "Kabul, Afghanistan · Remote",
     date: "2022 – Present",
     current: true,
     description:
-      "Working as a freelance full-stack developer and technical manager — building modern web and mobile applications for local and international clients.",
-    tags: ["Next.js", "React", "TypeScript", "Prisma", "MongoDB", "TailwindCSS","Project Management"],
-    color: "teal",
+      "Building modern web and mobile applications for local and international clients — including tourism platforms, job portals, SaaS products, Telegram bots, and corporate websites. Available on Upwork and Fiverr.",
+    tags: ["Next.js", "React", "TypeScript", "Supabase", "Prisma", "Flutter", "Framer Motion", "Vercel"],
+    color: "blue",
   },
   {
     title: "Front-End Developer / IT Specialist",
@@ -23,7 +34,7 @@ const experiences = [
     description:
       "Worked as a front-end developer across two organizations over 3 years, progressively upskilling into full-stack development and IT support roles.",
     tags: ["HTML", "CSS", "JavaScript", "React", "IT Support", "System Maintenance", "Client Communication"],
-    color: "blue",
+    color: "amber",
   },
   {
     title: "IT Specialist",
@@ -33,8 +44,8 @@ const experiences = [
     current: false,
     description:
       "Provided technical IT support and system management for one of Afghanistan's most critical government institutions during national election operations.",
-    tags: ["Networking", "System Admin", "IT Support","Windows Server", "Linux", "Cisco", "Hardware Maintenance"],
-    color: "amber",
+    tags: ["Networking", "System Admin", "IT Support", "Windows Server", "Linux", "Cisco", "Hardware Maintenance"],
+    color: "purple",
   },
   {
     title: "B.Sc. Computer Science",
@@ -44,8 +55,8 @@ const experiences = [
     current: false,
     description:
       "Completed a 4-year Bachelor's degree in Computer Science. Built a strong foundation in algorithms, data structures, software engineering, and networking.",
-    tags: ["Computer Science", "Algorithms", "Networking","AI & Machine Learning", "Graduated with Honors"],
-    color: "purple",
+    tags: ["Computer Science", "Algorithms", "Networking", "AI & Machine Learning", "Graduated with Honors"],
+    color: "orange",
   },
   {
     title: "Shahid Balkhi High School",
@@ -54,36 +65,39 @@ const experiences = [
     date: "2001 – 2014",
     current: false,
     description:
-      "Completed 12 years of schooling from grade 1 to 12, consistently achieving first position in class throughout all years. Ranked as top student in the national Kankor university entrance exam. Excelled in core subjects with outstanding academic performance.",
+      "Completed 12 years of schooling from grade 1 to 12, consistently achieving first position in class throughout all years. Ranked as top student in the national Kankor university entrance exam.",
     tags: ["1st Position · All Years", "Top Kankor Score", "Mathematics", "Physics", "Dari Language"],
     color: "green",
     achievement: true,
   },
-]
+];
 
 const dotColors = {
   teal:   "border-teal-500",
   blue:   "border-blue-600",
   amber:  "border-amber-600",
   purple: "border-purple-600",
+  orange: "border-orange-500",
   green:  "border-green-600",
-}
+};
 
 const dotInnerColors = {
   teal:   "bg-teal-500",
   blue:   "bg-blue-600",
   amber:  "bg-amber-500",
   purple: "bg-purple-600",
+  orange: "bg-orange-500",
   green:  "bg-green-600",
-}
+};
 
 const tagColors = {
   teal:   "bg-teal-50 text-teal-700 dark:bg-teal-950 dark:text-teal-300",
   blue:   "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
   amber:  "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
   purple: "bg-purple-50 text-purple-700 dark:bg-purple-950 dark:text-purple-300",
+  orange: "bg-orange-50 text-orange-700 dark:bg-orange-950 dark:text-orange-300",
   green:  "bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300",
-}
+};
 
 export default function Experience() {
   return (
@@ -133,14 +147,14 @@ export default function Experience() {
           >
             {/* Dot */}
             <div className={`absolute -left-6 top-4 w-4 h-4 rounded-full border-2 bg-white dark:bg-gray-900 flex items-center justify-center ${dotColors[exp.color]}`}>
-              <div className={`w-1.5 h-1.5 rounded-full ${dotInnerColors[exp.color]}`} />
+              <div className={`w-1.5 h-1.5 rounded-full ${dotInnerColors[exp.color]} ${exp.current ? "animate-pulse" : ""}`} />
             </div>
 
             {/* Card */}
             <div className={`border rounded-xl p-5 bg-white dark:bg-gray-900 hover:translate-x-1 transition-all duration-300
               ${exp.achievement
-                ? 'border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600'
-                : 'border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500'
+                ? "border-green-200 dark:border-green-800 hover:border-green-400 dark:hover:border-green-600"
+                : "border-gray-200 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500"
               }`}
             >
               <div className="flex items-start justify-between gap-3 mb-1 flex-wrap">
@@ -150,7 +164,7 @@ export default function Experience() {
                   </h3>
                   {exp.current && (
                     <span className="flex items-center gap-1 text-xs font-medium text-teal-700 bg-teal-50 dark:bg-teal-950 dark:text-teal-400 rounded-full px-2.5 py-0.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
                       Current
                     </span>
                   )}
@@ -187,11 +201,10 @@ export default function Experience() {
                   </span>
                 ))}
               </div>
-
             </div>
           </motion.div>
         ))}
       </div>
     </section>
-  )
+  );
 }

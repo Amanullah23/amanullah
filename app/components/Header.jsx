@@ -3,24 +3,18 @@
 import { assets } from "../../assets/assets";
 import Image from "next/image";
 import React from "react";
-import { motion } from "motion/react"; // Change to "framer-motion" if needed
+import { motion } from "motion/react";
 
 const techStack = [
-  "React",
-  "Next.js",
-  "Flutter",
-  "Node.js",
-  "PostgreSQL",
-  "Networking",
-  "Git",
-  "Prisma ORM"
+  "Next.js", "TypeScript", "React", "Tailwind CSS",
+  "Supabase", "Flutter", "Node.js", "PostgreSQL", "Prisma ORM",
 ];
 
 const stats = [
-  { num: "7+", label: "Years exp." },
-  { num: "20+", label: "Projects" },
-  { num: "4", label: "Organizations" },
-  { num: "5", label: "Tech stacks" },
+  { num: "7+",  label: "Years exp."     },
+  { num: "20+", label: "Projects"       },
+  { num: "4",   label: "Organizations"  },
+  { num: "8+",  label: "Tech stacks"    },
 ];
 
 const Header = () => {
@@ -40,7 +34,7 @@ const Header = () => {
           height={142}
           className="rounded-full border-2 border-gray-200 dark:border-gray-700"
         />
-        <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-teal-500 rounded-full border-2 border-white dark:border-gray-900" />
+        <span className="absolute bottom-1 right-1 w-3.5 h-3.5 bg-teal-500 rounded-full border-2 border-white dark:border-gray-900 animate-pulse" />
       </motion.div>
 
       {/* Available badge */}
@@ -50,7 +44,7 @@ const Header = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="flex items-center gap-2 text-xs font-medium text-teal-700 bg-teal-50 dark:bg-teal-950 dark:text-teal-400 rounded-full px-4 py-1.5 mb-5"
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
         Available for new projects
       </motion.div>
 
@@ -61,8 +55,7 @@ const Header = () => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
       >
-        <span className="text-red-500 font-medium">Hi</span>, I am Amanullah
-        Yawari
+        <span className="text-red-500 font-medium">Hi</span>, I am Amanullah Yawari
       </motion.p>
 
       {/* Title */}
@@ -131,13 +124,7 @@ const Header = () => {
           className="w-full sm:w-auto text-center px-8 py-3 rounded-full bg-black dark:bg-white text-white dark:text-black text-sm font-medium flex items-center justify-center gap-2 hover:opacity-80 hover:-translate-y-0.5 transition-all duration-300"
         >
           Contact me
-          <Image
-            src={assets.right_arrow_white}
-            alt="Arrow"
-            width={16}
-            height={16}
-            className="dark:invert"
-          />
+          <Image src={assets.right_arrow_white} alt="Arrow" width={16} height={16} className="dark:invert" />
         </a>
 
         <a
@@ -146,12 +133,7 @@ const Header = () => {
           className="w-full sm:w-auto text-center px-8 py-3 rounded-full border border-gray-300 dark:border-gray-600 text-sm flex items-center justify-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 transition-all duration-300"
         >
           My resume
-          <Image
-            src={assets.download_icon}
-            alt="Download"
-            width={16}
-            height={16}
-          />
+          <Image src={assets.download_icon} alt="Download" width={16} height={16} />
         </a>
       </motion.div>
 
@@ -171,7 +153,6 @@ const Header = () => {
               <p className="text-2xl font-bold">{s.num}</p>
               <p className="text-xs text-gray-400 mt-0.5">{s.label}</p>
             </div>
-
             {i < stats.length - 1 && (
               <div className="w-px h-8 bg-gray-200 dark:bg-gray-700" />
             )}
@@ -182,9 +163,7 @@ const Header = () => {
       {/* Scroll indicator */}
       <div className="flex flex-col items-center gap-1.5 mt-10">
         <div className="w-px h-7 bg-gray-200 dark:bg-gray-700" />
-        <span className="text-xs tracking-widest uppercase text-gray-400">
-          scroll
-        </span>
+        <span className="text-xs tracking-widest uppercase text-gray-400">scroll</span>
       </div>
     </div>
   );

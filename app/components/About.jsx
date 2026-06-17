@@ -4,10 +4,14 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "motion/react";
 
+// ─── Skills pills ─────────────────────────────────────────────────────────────
+// Fixed: added TypeScript, removed TensorFlow (not your main focus anymore),
+// reordered to reflect your actual primary stack first.
 const skills = [
-  "React", "Next.js", "Flutter", "Django",
-  "Python", "TensorFlow", "TailwindCSS", "Figma", "PostgreSQL"
+  "Next.js", "TypeScript", "React", "Tailwind CSS",
+  "Supabase", "PostgreSQL", "Prisma", "Flutter", "Python",
 ]
+// ─────────────────────────────────────────────────────────────────────────────
 
 const About = ({ isDarkMode }) => {
   return (
@@ -56,7 +60,7 @@ const About = ({ isDarkMode }) => {
             />
           </div>
           <div className="flex items-center gap-2 text-xs font-medium text-teal-700 bg-teal-50 dark:bg-teal-950 dark:text-teal-400 rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-teal-500" />
+            <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
             Available for work
           </div>
         </motion.div>

@@ -81,7 +81,7 @@ const Work = () => {
             className='rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 relative cursor-pointer group hover:-translate-y-1 transition-transform duration-300 block'
           >
             {/* Screenshot area */}
-            <div className='aspect-[4/3] bg-gray-100 dark:bg-gray-800 relative overflow-hidden'>
+            <div className='aspect-4/3 bg-gray-100 dark:bg-gray-800 relative overflow-hidden'>
               {/* When bgImage exists this renders the screenshot */}
               <div
                 className='absolute inset-0 bg-no-repeat bg-cover bg-top transition-transform duration-500 group-hover:scale-105'

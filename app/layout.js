@@ -11,8 +11,41 @@ const ovo = Ovo({
 });
 
 export const metadata = {
-  title: "Portfolio-Amanullah Yawari",
-  description: "AllAboutAmanullahYawar's Portfolio Website",
+  title: "Amanullah Yawari — Full-Stack Developer",
+  description:
+    "Full-Stack Developer from Kabul, Afghanistan — Next.js, TypeScript, Supabase, Flutter. Available for remote freelance projects.",
+  keywords: [
+    "Full-Stack Developer",
+    "Next.js Developer",
+    "Afghan Developer",
+    "Remote Freelance Developer",
+    "TypeScript",
+    "Supabase",
+    "Flutter",
+    "Kabul Afghanistan",
+  ],
+  authors: [{ name: "Amanullah Yawari", url: "https://yawari.vercel.app" }],
+  creator: "Amanullah Yawari",
+  openGraph: {
+    title: "Amanullah Yawari — Full-Stack Developer",
+    description:
+      "Full-Stack Developer from Kabul, Afghanistan — Next.js, TypeScript, Supabase, Flutter. Available for remote freelance projects.",
+    url: "https://yawari.vercel.app",
+    siteName: "Amanullah Yawari Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Amanullah Yawari — Full-Stack Developer",
+    description:
+      "Full-Stack Developer from Kabul — Next.js, TypeScript, Supabase, Flutter.",
+    creator: "@amanullah_yawari",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -25,7 +58,6 @@ export default function RootLayout({ children }) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
-
       </body>
     </html>
   );
