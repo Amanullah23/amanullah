@@ -89,7 +89,7 @@ const Navbar = () => {
           <li><a href="/#services">Services</a></li>
           <li><a href="/#work">My Work</a></li>
           <li><a href="/#certificates">Certificates</a></li>
-          <li><a href="/#contact">Contact me</a></li>
+          <li><a href="/blog">Blog</a></li>
         </ul>
 
         {/* Right Section */}
@@ -190,8 +190,8 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li>
-                  <a onClick={closeMenu} href="#contact" className="block py-2 text-lg">
-                    Contact me
+                  <a onClick={closeMenu} href="/blog" className="block py-2 text-lg">
+                    Blog
                   </a>
                 </li>
               </ul>

@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import CertificatesGallery from "./components/CertificatesGallery";
 import Contact from "./components/Contact";
+//import BlogSection from "./blog/BlogSection";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       {/*<Certificate />*/}
       <CertificatesGallery/>
       <Contact/>
+      
       <Footer />
     </>
   );
