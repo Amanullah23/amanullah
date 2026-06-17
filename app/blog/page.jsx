@@ -1,729 +1,359 @@
 "use client";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, Clock, Search } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const featuredPost = {
-  title: "Building My Developer Portfolio with Next.js",
-  description:
-    "A practical look at how I designed, built, and deployed my portfolio while improving my frontend development skills.",
-  date: "June 2026",
-  readTime: "6 min read",
-  category: "Next.js",
-  href: "/blog/building-my-developer-portfolio",
-};
-
-const posts = [
+// ─── BLOG POSTS DATA ──────────────────────────────────────────────────────────
+// Edit these posts with your real content.
+// slug must match the folder name under /app/blog/[slug]/page.jsx
+const POSTS = [
   {
+    id: 1,
+    slug: "building-my-developer-portfolio",
+    title: "Building My Developer Portfolio with Next.js 15",
+    excerpt:
+      "A practical look at how I designed, built, and deployed my portfolio — the decisions I made, the mistakes I fixed, and what I learned about modern React architecture.",
+    date: "June 2026",
+    readTime: "6 min read",
+    category: "Next.js",
+    featured: true,
+  },
+  {
+    id: 2,
+    slug: "how-i-started-learning-nextjs",
     title: "How I Started Learning Next.js",
-    description:
-      "The roadmap I followed, the mistakes I made, and the lessons that helped me understand modern React apps.",
+    excerpt:
+      "The roadmap I followed, the mistakes I made, and the lessons that helped me understand modern React apps — from a developer based in Kabul.",
     date: "June 2026",
     readTime: "4 min read",
     category: "Learning",
-    href: "/blog/how-i-started-learning-nextjs",
+    featured: false,
   },
   {
+    id: 3,
+    slug: "why-developers-need-a-portfolio",
     title: "Why Every Developer Needs a Portfolio",
-    description:
-      "A portfolio helps you prove your skills, present your projects, and create trust with clients or employers.",
+    excerpt:
+      "A portfolio helps you prove your skills, present your projects, and build trust with international clients. Here's why I built mine and what changed after.",
     date: "June 2026",
     readTime: "3 min read",
     category: "Career",
-    href: "/blog/why-developers-need-a-portfolio",
+    featured: false,
   },
   {
-    title: "My Favorite Tools for Web Development",
-    description:
-      "The tools I use for coding, designing, debugging, and deploying professional websites.",
+    id: 4,
+    slug: "my-favorite-web-dev-tools",
+    title: "My Favorite Tools for Web Development in 2026",
+    excerpt:
+      "The tools I use daily for coding, designing, debugging, and deploying — from VS Code extensions to Supabase, Vercel, and everything in between.",
     date: "June 2026",
     readTime: "5 min read",
     category: "Tools",
-    href: "/blog/my-favorite-web-dev-tools",
+    featured: false,
   },
   {
+    id: 5,
+    slug: "what-i-learned-from-projects",
     title: "What I Learned from Building Real Projects",
-    description:
-      "Why project-based learning is the fastest way to become confident with frontend development.",
+    excerpt:
+      "Why project-based learning beats tutorials every time — and the specific lessons I took from AfghanRoutes, KabulHire, Flowe, and the Quika Finance System.",
     date: "June 2026",
     readTime: "4 min read",
     category: "Projects",
-    href: "/blog/what-i-learned-from-projects",
+    featured: false,
+  },
+  {
+    id: 6,
+    slug: "freelancing-from-afghanistan",
+    title: "Freelancing Internationally from Afghanistan",
+    excerpt:
+      "How I'm building a remote freelance career on Upwork and Fiverr from Kabul — the challenges, the wins, and what I'd tell any Afghan developer starting out.",
+    date: "June 2026",
+    readTime: "5 min read",
+    category: "Career",
+    featured: false,
   },
 ];
 
-const categories = [
-  "All",
-  "Next.js",
-  "Learning",
-  "Career",
-  "Tools",
-  "Projects",
-];
+const CATEGORIES = ["All", "Next.js", "Learning", "Career", "Tools", "Projects"];
 
-const categoryColors = {
-  "Next.js": {
-    bg: "bg-violet-50",
-    text: "text-violet-700",
-    border: "border-violet-200",
-  },
-  Learning: { bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200" },
-  Career: {
-    bg: "bg-emerald-50",
-    text: "text-emerald-700",
-    border: "border-emerald-200",
-  },
-  Tools: {
-    bg: "bg-amber-50",
-    text: "text-amber-700",
-    border: "border-amber-200",
-  },
-  Projects: {
-    bg: "bg-rose-50",
-    text: "text-rose-700",
-    border: "border-rose-200",
-  },
+const CATEGORY_STYLES = {
+  "Next.js":  { badge: "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",   bar: "bg-blue-500"   },
+  Learning:   { badge: "bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300",       bar: "bg-sky-500"    },
+  Career:     { badge: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300", bar: "bg-emerald-500" },
+  Tools:      { badge: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300", bar: "bg-amber-500" },
+  Projects:   { badge: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300",   bar: "bg-rose-500"   },
 };
 
-export default function BlogPage() {
+const DEFAULT_STYLE = { badge: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300", bar: "bg-gray-400" };
+
+function CategoryBadge({ category, size = "sm" }) {
+  const style = CATEGORY_STYLES[category] || DEFAULT_STYLE;
   return (
-    <>
-      <Navbar />
-      <main
-        className="min-h-screen text-slate-900"
-        style={{
-          backgroundColor: "#FAFAF8",
-          fontFamily: "'DM Sans', sans-serif",
-        }}
-      >
-        {/* ─── Hero Header ─── */}
-        <section
-          style={{
-            borderBottom: "1px solid #fffdd0",
-            backgroundColor: "#edece6",
-            paddingTop: "7rem",
-            paddingBottom: "4rem",
-            paddingLeft: "1.5rem",
-            paddingRight: "1.5rem",
-          }}
-        >
-          <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-            {/* Label */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginBottom: "1.5rem",
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  width: "2rem",
-                  height: "1px",
-                  backgroundColor: "#6366f1",
-                }}
-              />
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "#091442",
-                }}
-              >
-                Writing
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1
-              style={{
-                fontFamily: "'Fraunces', serif",
-                fontSize: "clamp(2.5rem, 6vw, 5rem)",
-                fontWeight: 900,
-                lineHeight: 1.05,
-                letterSpacing: "-0.03em",
-                color: "#0a0900",
-                maxWidth: "52rem",
-                marginBottom: "1.5rem",
-              }}
-            >
-              Ideas, lessons &amp; notes from my developer journey.
-            </h1>
-
-            <p
-              style={{
-                fontSize: "1.1rem",
-                lineHeight: 1.75,
-                color: "#0a0900",
-                maxWidth: "38rem",
-                marginBottom: "2.5rem",
-              }}
-            >
-              I write about web development, Next.js, projects, tools, and the
-              things I learn while building modern digital experiences.
-            </p>
-
-            {/* Filter + Search row */}
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: "1rem",
-              }}
-            >
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                {categories.map((cat, i) => (
-                  <button
-                    key={cat}
-                    type="button"
-                    style={{
-                      padding: "0.4rem 1rem",
-                      borderRadius: "999px",
-                      fontSize: "0.8rem",
-                      fontWeight: 500,
-                      border:
-                        i === 0 ? "1px solid #6366f1" : "1px solid #2D2D2B",
-                      backgroundColor: i === 0 ? "#6366f1" : "transparent",
-                      color: i === 0 ? "#fff" : "#0a0900",
-                      cursor: "pointer",
-                      transition: "all 0.2s",
-                    }}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.6rem",
-                  padding: "0.5rem 1.1rem",
-                  borderRadius: "999px",
-                  border: "1px solid #0a0900",
-                  backgroundColor: "#1A1A18",
-                  width: "16rem",
-                }}
-              >
-                <Search
-                  style={{
-                    width: "0.9rem",
-                    height: "0.9rem",
-                    color: "#6B7280",
-                    flexShrink: 0,
-                  }}
-                />
-                <input
-                  type="text"
-                  placeholder="Search articles…"
-                  style={{
-                    background: "transparent",
-                    border: "none",
-                    outline: "none",
-                    fontSize: "0.85rem",
-                    color: "#E5E7EB",
-                    width: "100%",
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Featured + Sidebar ─── */}
-        <section style={{ padding: "4rem 1.5rem 0" }}>
-          <div
-            style={{
-              maxWidth: "72rem",
-              margin: "0 auto",
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "1.25rem",
-            }}
-          >
-            {/* Featured card */}
-            <Link
-              href={featuredPost.href}
-              style={{
-                position: "relative",
-                borderRadius: "1rem",
-                overflow: "hidden",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                padding: "2.25rem",
-                minHeight: "420px",
-                backgroundColor: "#0F0F0E",
-                border: "1px solid #1F1F1D",
-                textDecoration: "none",
-                transition: "transform 0.25s, box-shadow 0.25s",
-                gridColumn: "span 2",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-3px)";
-                e.currentTarget.style.boxShadow =
-                  "0 20px 48px rgba(0,0,0,0.22)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              {/* Background accent */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  backgroundImage:
-                    "radial-gradient(ellipse 60% 55% at 90% 10%, rgba(99,102,241,0.18) 0%, transparent 70%), radial-gradient(ellipse 50% 50% at 10% 85%, rgba(20,184,166,0.12) 0%, transparent 70%)",
-                  pointerEvents: "none",
-                }}
-              />
-
-              {/* Dot grid texture */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  backgroundImage:
-                    "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
-                  backgroundSize: "22px 22px",
-                  pointerEvents: "none",
-                }}
-              />
-
-              <div style={{ position: "relative" }}>
-                {/* Badges */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "0.5rem",
-                    marginBottom: "1.75rem",
-                  }}
-                >
-                  <span
-                    style={{
-                      padding: "0.25rem 0.85rem",
-                      borderRadius: "999px",
-                      fontSize: "0.72rem",
-                      fontWeight: 700,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      backgroundColor: "rgba(99,102,241,0.18)",
-                      color: "#a5b4fc",
-                      border: "1px solid rgba(99,102,241,0.3)",
-                    }}
-                  >
-                    Featured
-                  </span>
-                  <span
-                    style={{
-                      padding: "0.25rem 0.85rem",
-                      borderRadius: "999px",
-                      fontSize: "0.72rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.08em",
-                      textTransform: "uppercase",
-                      backgroundColor: "rgba(255,255,255,0.06)",
-                      color: "#0a0900",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                    }}
-                  >
-                    {featuredPost.category}
-                  </span>
-                </div>
-
-                <h2
-                  style={{
-                    fontFamily: "'Fraunces', serif",
-                    fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
-                    fontWeight: 800,
-                    lineHeight: 1.15,
-                    letterSpacing: "-0.025em",
-                    color: "#FAFAF8",
-                    maxWidth: "28rem",
-                    marginBottom: "1rem",
-                  }}
-                >
-                  {featuredPost.title}
-                </h2>
-
-                <p
-                  style={{
-                    fontSize: "1rem",
-                    lineHeight: 1.7,
-                    color: "#0a0900",
-                    maxWidth: "32rem",
-                  }}
-                >
-                  {featuredPost.description}
-                </p>
-              </div>
-
-              <div
-                style={{
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                  marginTop: "2rem",
-                }}
-              >
-                <div style={{ display: "flex", gap: "1.25rem" }}>
-                  <span
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                      fontSize: "0.8rem",
-                      color: "#6B7280",
-                    }}
-                  >
-                    <CalendarDays
-                      style={{ width: "0.85rem", height: "0.85rem" }}
-                    />
-                    {featuredPost.date}
-                  </span>
-                  <span
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.4rem",
-                      fontSize: "0.8rem",
-                      color: "#6B7280",
-                    }}
-                  >
-                    <Clock style={{ width: "0.85rem", height: "0.85rem" }} />
-                    {featuredPost.readTime}
-                  </span>
-                </div>
-
-                <span
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.4rem",
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
-                    color: "#a5b4fc",
-                    transition: "gap 0.2s",
-                  }}
-                >
-                  Read article
-                  <ArrowRight style={{ width: "0.9rem", height: "0.9rem" }} />
-                </span>
-              </div>
-            </Link>
-
-            {/* Sidebar posts */}
-            {posts.slice(0, 2).map((post) => (
-              <SidebarCard key={post.title} post={post} />
-            ))}
-          </div>
-        </section>
-
-        {/* ─── Divider ─── */}
-        <section style={{ padding: "3rem 1.5rem 0" }}>
-          <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-                marginBottom: "2rem",
-              }}
-            >
-              <span
-                style={{
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#9CA3AF",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                More articles
-              </span>
-              <div
-                style={{ flex: 1, height: "1px", backgroundColor: "#E4E4DE" }}
-              />
-            </div>
-
-            {/* Bottom 2 cards */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-                gap: "1.25rem",
-                paddingBottom: "5rem",
-              }}
-            >
-              {posts.slice(2).map((post) => (
-                <BottomCard key={post.title} post={post} />
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </>
+    <span className={`inline-block font-medium rounded-full px-3 py-0.5 ${size === "xs" ? "text-[10px]" : "text-xs"} ${style.badge}`}>
+      {category}
+    </span>
   );
 }
 
-function SidebarCard({ post }) {
-  const color = categoryColors[post.category] || {
-    bg: "bg-slate-50",
-    text: "text-slate-600",
-    border: "border-slate-200",
-  };
-
+function FeaturedCard({ post }) {
+  const style = CATEGORY_STYLES[post.category] || DEFAULT_STYLE;
   return (
     <Link
-      href={post.href}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        borderRadius: "1rem",
-        border: "1px solid #E4E4DE",
-        backgroundColor: "#fff",
-        padding: "1.75rem",
-        textDecoration: "none",
-        transition: "transform 0.22s, box-shadow 0.22s, border-color 0.22s",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-3px)";
-        e.currentTarget.style.boxShadow = "0 12px 36px rgba(0,0,0,0.08)";
-        e.currentTarget.style.borderColor = "#6366f1";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-        e.currentTarget.style.borderColor = "#E4E4DE";
-      }}
+      href={`/blog/${post.slug}`}
+      className="group relative flex flex-col justify-between rounded-2xl border border-gray-100 dark:border-gray-800
+        bg-white dark:bg-gray-900 p-8 overflow-hidden
+        hover:-translate-y-1 hover:shadow-xl dark:hover:shadow-black/30 hover:border-gray-200 dark:hover:border-gray-700
+        transition-all duration-300 min-h-[280px]"
     >
+      {/* Subtle radial glow */}
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{ background: "radial-gradient(ellipse 60% 50% at 80% 20%, rgba(99,102,241,0.06) 0%, transparent 70%)" }}
+      />
+
+      {/* Top accent bar */}
+      <div className={`absolute top-0 left-8 right-8 h-[2px] rounded-full ${style.bar} opacity-60`} />
+
       <div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginBottom: "1.25rem",
-          }}
-        >
-          <CategoryBadge category={post.category} />
-          <span style={{ fontSize: "0.78rem", color: "#9CA3AF" }}>
-            {post.readTime}
+        {/* Badges */}
+        <div className="flex items-center gap-2 mb-5">
+          <span className="text-[10px] font-semibold tracking-widest uppercase text-gray-400 dark:text-gray-500 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-0.5">
+            Featured
           </span>
+          <CategoryBadge category={post.category} size="xs" />
         </div>
 
-        <h3
-          style={{
-            fontFamily: "'Fraunces', serif",
-            fontSize: "1.2rem",
-            fontWeight: 700,
-            lineHeight: 1.3,
-            letterSpacing: "-0.015em",
-            color: "#0F0F0E",
-            marginBottom: "0.75rem",
-          }}
-        >
+        <h2 className="text-2xl sm:text-3xl font-serif font-bold text-gray-900 dark:text-white leading-tight mb-3 group-hover:text-black dark:group-hover:text-white transition-colors">
           {post.title}
-        </h3>
+        </h2>
 
-        <p style={{ fontSize: "0.875rem", lineHeight: 1.65, color: "#6B7280" }}>
-          {post.description}
+        <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-2xl">
+          {post.excerpt}
         </p>
       </div>
 
-      <div
-        style={{
-          marginTop: "1.5rem",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.35rem",
-            fontSize: "0.78rem",
-            color: "#9CA3AF",
-          }}
-        >
-          <CalendarDays style={{ width: "0.8rem", height: "0.8rem" }} />
-          {post.date}
-        </span>
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.35rem",
-            fontSize: "0.8rem",
-            fontWeight: 600,
-            color: "#6366f1",
-          }}
-        >
-          Read more
-          <ArrowRight style={{ width: "0.8rem", height: "0.8rem" }} />
+      <div className="flex items-center justify-between mt-8 pt-5 border-t border-gray-50 dark:border-gray-800">
+        <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
+          <span>{post.date}</span>
+          <span>·</span>
+          <span>{post.readTime}</span>
+        </div>
+        <span className="flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300
+          group-hover:text-black dark:group-hover:text-white transition-colors">
+          Read article
+          <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
         </span>
       </div>
     </Link>
   );
 }
 
-function BottomCard({ post }) {
+function PostCard({ post }) {
+  const style = CATEGORY_STYLES[post.category] || DEFAULT_STYLE;
   return (
     <Link
-      href={post.href}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: "1rem",
-        border: "1px solid #E4E4DE",
-        backgroundColor: "#fff",
-        padding: "1.75rem",
-        textDecoration: "none",
-        transition: "transform 0.22s, box-shadow 0.22s, border-color 0.22s",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-3px)";
-        e.currentTarget.style.boxShadow = "0 12px 36px rgba(0,0,0,0.08)";
-        e.currentTarget.style.borderColor = "#6366f1";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "translateY(0)";
-        e.currentTarget.style.boxShadow = "none";
-        e.currentTarget.style.borderColor = "#E4E4DE";
-      }}
+      href={`/blog/${post.slug}`}
+      className="group flex flex-col border border-gray-100 dark:border-gray-800 rounded-2xl p-6 bg-white dark:bg-gray-900
+        hover:-translate-y-1 hover:shadow-md dark:hover:shadow-black/30 hover:border-gray-200 dark:hover:border-gray-700
+        transition-all duration-300"
     >
-      {/* Top accent bar */}
-      <div
-        style={{
-          height: "3px",
-          borderRadius: "999px",
-          background: "linear-gradient(90deg, #6366f1, #8b5cf6)",
-          marginBottom: "1.5rem",
-          width: "2.5rem",
-        }}
-      />
+      {/* Colored top bar */}
+      <div className={`w-8 h-[3px] rounded-full mb-5 ${style.bar} group-hover:w-12 transition-all duration-300`} />
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          marginBottom: "1rem",
-        }}
-      >
-        <CategoryBadge category={post.category} />
-        <span style={{ fontSize: "0.78rem", color: "#9CA3AF" }}>
-          {post.readTime}
-        </span>
+      <div className="flex items-center justify-between mb-3">
+        <CategoryBadge category={post.category} size="xs" />
+        <span className="text-[11px] text-gray-400 dark:text-gray-500">{post.readTime}</span>
       </div>
 
-      <h3
-        style={{
-          fontFamily: "'Fraunces', serif",
-          fontSize: "1.2rem",
-          fontWeight: 700,
-          lineHeight: 1.3,
-          letterSpacing: "-0.015em",
-          color: "#0F0F0E",
-          marginBottom: "0.75rem",
-          flex: 1,
-        }}
-      >
+      <h3 className="text-base font-semibold text-gray-800 dark:text-white leading-snug mb-2 flex-1
+        group-hover:text-black dark:group-hover:text-white transition-colors">
         {post.title}
       </h3>
 
-      <p
-        style={{
-          fontSize: "0.875rem",
-          lineHeight: 1.65,
-          color: "#6B7280",
-          marginBottom: "1.5rem",
-        }}
-      >
-        {post.description}
+      <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed mb-5 line-clamp-2">
+        {post.excerpt}
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          borderTop: "1px solid #F0F0EC",
-          paddingTop: "1rem",
-        }}
-      >
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.35rem",
-            fontSize: "0.78rem",
-            color: "#9CA3AF",
-          }}
-        >
-          <CalendarDays style={{ width: "0.8rem", height: "0.8rem" }} />
-          {post.date}
-        </span>
-
-        <span
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.35rem",
-            fontSize: "0.8rem",
-            fontWeight: 600,
-            color: "#6366f1",
-          }}
-        >
+      <div className="flex items-center justify-between pt-4 border-t border-gray-50 dark:border-gray-800 mt-auto">
+        <span className="text-[11px] text-gray-400 dark:text-gray-500">{post.date}</span>
+        <span className="flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500
+          group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
           Read more
-          <ArrowRight style={{ width: "0.8rem", height: "0.8rem" }} />
+          <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </span>
       </div>
     </Link>
   );
 }
 
-function CategoryBadge({ category }) {
-  const palettes = {
-    "Next.js": { bg: "#EEF2FF", color: "#4338CA" },
-    Learning: { bg: "#E0F2FE", color: "#0369A1" },
-    Career: { bg: "#DCFCE7", color: "#166534" },
-    Tools: { bg: "#FEF9C3", color: "#854D0E" },
-    Projects: { bg: "#FFF1F2", color: "#9F1239" },
-  };
-  const p = palettes[category] || { bg: "#F1F5F9", color: "#475569" };
+export default function BlogPage() {
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [visibleCount, setVisibleCount] = useState(6);
+
+  const featured = POSTS.find((p) => p.featured);
+
+  const filtered = POSTS.filter((p) => {
+    if (p.featured) return false; // featured shown separately
+    return activeCategory === "All" || p.category === activeCategory;
+  });
+
+  // If filtering by a category that the featured post belongs to, show it inline too
+  const showFeaturedInline = featured && activeCategory !== "All" && featured.category === activeCategory;
+  const allFiltered = showFeaturedInline ? [featured, ...filtered] : filtered;
+
+  const visible = allFiltered.slice(0, visibleCount);
+  const hasMore = visibleCount < allFiltered.length;
 
   return (
-    <span
-      style={{
-        padding: "0.25rem 0.75rem",
-        borderRadius: "999px",
-        fontSize: "0.72rem",
-        fontWeight: 600,
-        letterSpacing: "0.04em",
-        backgroundColor: p.bg,
-        color: p.color,
-      }}
-    >
-      {category}
-    </span>
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
+
+        {/* ── Header ── */}
+        <section className="w-full px-[8%] pt-28 pb-16 border-b border-gray-100 dark:border-gray-800">
+          <div className="max-w-4xl">
+            <motion.div
+              className="flex items-center gap-3 mb-6"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="w-8 h-px bg-gray-300 dark:bg-gray-600" />
+              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 dark:text-gray-500">
+                Writing
+              </span>
+            </motion.div>
+
+            <motion.h1
+              className="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold leading-[1.05] tracking-tight text-gray-900 dark:text-white mb-5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              Ideas, lessons &<br />
+              <span className="italic font-normal text-gray-400 dark:text-gray-500">
+                notes from the journey.
+              </span>
+            </motion.h1>
+
+            <motion.p
+              className="text-base text-gray-500 dark:text-gray-400 leading-relaxed max-w-lg mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              I write about Next.js, full-stack development, freelancing from
+              Afghanistan, and the things I learn while building real products.
+            </motion.p>
+
+            {/* Category filters */}
+            <motion.div
+              className="flex flex-wrap gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => { setActiveCategory(cat); setVisibleCount(6); }}
+                  aria-pressed={cat === activeCategory}
+                  className={`px-4 py-1.5 rounded-full text-sm border transition-all duration-200 font-Ovo
+                    ${cat === activeCategory
+                      ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
+                      : "border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-gray-500 dark:hover:border-gray-400 bg-white dark:bg-transparent"
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ── Content ── */}
+        <section className="w-full px-[8%] py-14">
+
+          {/* Featured post — only shown when on "All" */}
+          <AnimatePresence mode="wait">
+            {activeCategory === "All" && featured && (
+              <motion.div
+                key="featured"
+                className="mb-8"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+              >
+                <FeaturedCard post={featured} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Section label */}
+          {activeCategory === "All" && (
+            <div className="flex items-center gap-4 mb-8">
+              <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-gray-400 dark:text-gray-500 whitespace-nowrap">
+                {activeCategory === "All" ? "All articles" : activeCategory}
+              </span>
+              <div className="flex-1 h-px bg-gray-100 dark:bg-gray-800" />
+            </div>
+          )}
+
+          {/* Posts grid */}
+          <AnimatePresence mode="wait">
+            {visible.length > 0 ? (
+              <motion.div
+                key={activeCategory}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                {visible.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty"
+                className="text-center py-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+              >
+                <p className="text-sm text-gray-400 dark:text-gray-500">
+                  No posts in this category yet — check back soon.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Load more */}
+          {hasMore && (
+            <div className="flex justify-center mt-4">
+              <button
+                onClick={() => setVisibleCount((c) => c + 6)}
+                className="px-7 py-3 rounded-full border border-gray-300 dark:border-gray-700
+                  text-sm text-gray-500 dark:text-gray-400 font-Ovo
+                  hover:bg-black hover:text-white hover:border-black
+                  dark:hover:bg-white dark:hover:text-black dark:hover:border-white
+                  transition-all duration-300"
+              >
+                Load more articles
+              </button>
+            </div>
+          )}
+        </section>
+
+      </main>
+      <Footer />
+    </>
   );
 }
