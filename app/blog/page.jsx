@@ -77,22 +77,50 @@ const POSTS = [
   },
 ];
 
-const CATEGORIES = ["All", "Next.js", "Learning", "Career", "Tools", "Projects"];
+const CATEGORIES = [
+  "All",
+  "Next.js",
+  "Learning",
+  "Career",
+  "Tools",
+  "Projects",
+];
 
 const CATEGORY_STYLES = {
-  "Next.js":  { badge: "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",   bar: "bg-blue-500"   },
-  Learning:   { badge: "bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300",       bar: "bg-sky-500"    },
-  Career:     { badge: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300", bar: "bg-emerald-500" },
-  Tools:      { badge: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300", bar: "bg-amber-500" },
-  Projects:   { badge: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300",   bar: "bg-rose-500"   },
+  "Next.js": {
+    badge: "bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300",
+    bar: "bg-blue-500",
+  },
+  Learning: {
+    badge: "bg-sky-50 text-sky-700 dark:bg-sky-950 dark:text-sky-300",
+    bar: "bg-sky-500",
+  },
+  Career: {
+    badge:
+      "bg-emerald-50 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300",
+    bar: "bg-emerald-500",
+  },
+  Tools: {
+    badge: "bg-amber-50 text-amber-700 dark:bg-amber-950 dark:text-amber-300",
+    bar: "bg-amber-500",
+  },
+  Projects: {
+    badge: "bg-rose-50 text-rose-700 dark:bg-rose-950 dark:text-rose-300",
+    bar: "bg-rose-500",
+  },
 };
 
-const DEFAULT_STYLE = { badge: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300", bar: "bg-gray-400" };
+const DEFAULT_STYLE = {
+  badge: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300",
+  bar: "bg-gray-400",
+};
 
 function CategoryBadge({ category, size = "sm" }) {
   const style = CATEGORY_STYLES[category] || DEFAULT_STYLE;
   return (
-    <span className={`inline-block font-medium rounded-full px-3 py-0.5 ${size === "xs" ? "text-[10px]" : "text-xs"} ${style.badge}`}>
+    <span
+      className={`inline-block font-medium rounded-full px-3 py-0.5 ${size === "xs" ? "text-[10px]" : "text-xs"} ${style.badge}`}
+    >
       {category}
     </span>
   );
@@ -109,12 +137,18 @@ function FeaturedCard({ post }) {
         transition-all duration-300 min-h-[280px]"
     >
       {/* Subtle radial glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 60% 50% at 80% 20%, rgba(99,102,241,0.06) 0%, transparent 70%)" }}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 50% at 80% 20%, rgba(99,102,241,0.06) 0%, transparent 70%)",
+        }}
       />
 
       {/* Top accent bar */}
-      <div className={`absolute top-0 left-8 right-8 h-[2px] rounded-full ${style.bar} opacity-60`} />
+      <div
+        className={`absolute top-0 left-8 right-8 h-0.5 rounded-full ${style.bar} opacity-60`}
+      />
 
       <div>
         {/* Badges */}
@@ -140,11 +174,23 @@ function FeaturedCard({ post }) {
           <span>·</span>
           <span>{post.readTime}</span>
         </div>
-        <span className="flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300
-          group-hover:text-black dark:group-hover:text-white transition-colors">
+        <span
+          className="flex items-center gap-1.5 text-sm font-medium text-gray-700 dark:text-gray-300
+          group-hover:text-black dark:group-hover:text-white transition-colors"
+        >
           Read article
-          <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            />
           </svg>
         </span>
       </div>
@@ -162,15 +208,21 @@ function PostCard({ post }) {
         transition-all duration-300"
     >
       {/* Colored top bar */}
-      <div className={`w-8 h-[3px] rounded-full mb-5 ${style.bar} group-hover:w-12 transition-all duration-300`} />
+      <div
+        className={`w-8 h-0.5 rounded-full mb-5 ${style.bar} group-hover:w-12 transition-all duration-300`}
+      />
 
       <div className="flex items-center justify-between mb-3">
         <CategoryBadge category={post.category} size="xs" />
-        <span className="text-[11px] text-gray-400 dark:text-gray-500">{post.readTime}</span>
+        <span className="text-[11px] text-gray-400 dark:text-gray-500">
+          {post.readTime}
+        </span>
       </div>
 
-      <h3 className="text-base font-semibold text-gray-800 dark:text-white leading-snug mb-2 flex-1
-        group-hover:text-black dark:group-hover:text-white transition-colors">
+      <h3
+        className="text-base font-semibold text-gray-800 dark:text-white leading-snug mb-2 flex-1
+        group-hover:text-black dark:group-hover:text-white transition-colors"
+      >
         {post.title}
       </h3>
 
@@ -179,12 +231,26 @@ function PostCard({ post }) {
       </p>
 
       <div className="flex items-center justify-between pt-4 border-t border-gray-50 dark:border-gray-800 mt-auto">
-        <span className="text-[11px] text-gray-400 dark:text-gray-500">{post.date}</span>
-        <span className="flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500
-          group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors">
+        <span className="text-[11px] text-gray-400 dark:text-gray-500">
+          {post.date}
+        </span>
+        <span
+          className="flex items-center gap-1 text-xs font-medium text-gray-400 dark:text-gray-500
+          group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors"
+        >
           Read more
-          <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </span>
       </div>
@@ -204,7 +270,10 @@ export default function BlogPage() {
   });
 
   // If filtering by a category that the featured post belongs to, show it inline too
-  const showFeaturedInline = featured && activeCategory !== "All" && featured.category === activeCategory;
+  const showFeaturedInline =
+    featured &&
+    activeCategory !== "All" &&
+    featured.category === activeCategory;
   const allFiltered = showFeaturedInline ? [featured, ...filtered] : filtered;
 
   const visible = allFiltered.slice(0, visibleCount);
@@ -214,7 +283,6 @@ export default function BlogPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white">
-
         {/* ── Header ── */}
         <section className="w-full px-[8%] pt-28 pb-16 border-b border-gray-100 dark:border-gray-800">
           <div className="max-w-4xl">
@@ -262,12 +330,16 @@ export default function BlogPage() {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => { setActiveCategory(cat); setVisibleCount(6); }}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setVisibleCount(6);
+                  }}
                   aria-pressed={cat === activeCategory}
                   className={`px-4 py-1.5 rounded-full text-sm border transition-all duration-200 font-Ovo
-                    ${cat === activeCategory
-                      ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
-                      : "border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-gray-500 dark:hover:border-gray-400 bg-white dark:bg-transparent"
+                    ${
+                      cat === activeCategory
+                        ? "bg-black text-white border-black dark:bg-white dark:text-black dark:border-white"
+                        : "border-gray-300 dark:border-gray-700 text-gray-500 dark:text-gray-400 hover:border-gray-500 dark:hover:border-gray-400 bg-white dark:bg-transparent"
                     }`}
                 >
                   {cat}
@@ -279,7 +351,6 @@ export default function BlogPage() {
 
         {/* ── Content ── */}
         <section className="w-full px-[8%] py-14">
-
           {/* Featured post — only shown when on "All" */}
           <AnimatePresence mode="wait">
             {activeCategory === "All" && featured && (
@@ -351,7 +422,6 @@ export default function BlogPage() {
             </div>
           )}
         </section>
-
       </main>
       <Footer />
     </>

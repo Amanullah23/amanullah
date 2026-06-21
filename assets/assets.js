@@ -122,12 +122,12 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web & Mobile Development', description: 'Build responsive websites and cross-platform apps using Next.js, Django, Python, and Flutter.', link: '' },
-    { icon: assets.mobile_icon, title: 'AI & Machine Learning', description: 'Implement intelligent solutions with TensorFlow for smarter, data-driven results.', link: '' },
-    { icon: assets.ui_icon, title: 'Networking & IT Solutions', description: 'Design, manage, and optimize secure networks and IT systems.', link: '' },
-    { icon: assets.graphics_icon, title: 'System & Application Management', description: 'Maintain and improve digital platforms for smooth, efficient operation.', link: '' },
-    { icon: assets.uiux, title: "UI/UX consultation", description: "Design guidance for clean, user-focused interfaces with Tailwind CSS and dark mode support.", link: "/services" },
-    { icon: assets.it,  title: "IT training & mentoring", description: "One-on-one and group training in programming, networking, and system management.", link: "/services" },
+    { icon: assets.web_icon, title: 'Web Development', description: 'Full-stack web apps and websites with Next.js, TypeScript, Tailwind CSS, Supabase, and Prisma — from database to deployment.' },
+    { icon: assets.mobile_icon, title: 'Mobile Development', description: 'Cross-platform Android & iOS apps built with Flutter, Dart, and Firebase, from idea to launch.' },
+    { icon: assets.uiux, title: 'UI/UX Design', description: 'Clean, conversion-focused interfaces designed in Figma with smooth Framer Motion animations.' },
+    { icon: assets.graphics_icon, title: 'Management Systems', description: 'Custom ISP, finance, and business management systems with role-based access, billing, and reporting.' },
+    { icon: assets.it, title: 'Telegram Bots', description: 'Smart Telegram bots with deep-link attribution, Supabase backends, and real-time notifications.' },
+    { icon: assets.ui_icon, title: 'Networking', description: 'Enterprise network design, Cisco/MikroTik configuration, and IT infrastructure consulting.' },
 ]
 
 export const infoList = [
