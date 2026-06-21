@@ -11,6 +11,7 @@ const ovo = Ovo({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://yawari.vercel.app"),
   title: "Amanullah Yawari — Full-Stack Developer",
   description:
     "Full-Stack Developer from Kabul, Afghanistan — Next.js, TypeScript, Supabase, Flutter. Available for remote freelance projects.",
@@ -36,7 +37,7 @@ export const metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Amanullah Yawari — Full-Stack Developer",
     description:
       "Full-Stack Developer from Kabul — Next.js, TypeScript, Supabase, Flutter.",
